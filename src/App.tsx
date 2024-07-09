@@ -1,44 +1,65 @@
 import "./App.css";
-
-import { useState } from "react";
+import "tailwindcss/tailwind.css";
+//import { useState } from "react/jsx-runtime";
 import { useTranslation } from "react-i18next";
 import styled, { CSSProperties } from "styled-components";
-
-import ReactLogo from "./assets/react.svg?react";
+import { mockData, Post } from "./mockData.ts";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const ReadTheDocs = styled.p<{
   $color?: CSSProperties["color"];
 }>`
   color: ${({ $color }) => $color ?? "red"};
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin: 16px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  @media (max-width: 600px) {
+    width: 90%;
+  }
 `;
 
-function App() {
-  const [count, setCount] = useState(0);
-  const { t } = useTranslation("main");
+interface ShowDataProps {
+  post: Post;
+}
+const PostTitle = styled.h1`
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+`;
 
+const PostBody = styled.p`
+  font-size: 1em;
+`;
+
+const queryClient = new QueryClient();
+
+function ShowData({ post }: ShowDataProps) {
+  return (
+    <div>
+      <PostTitle>{post.title}</PostTitle>
+      <PostBody>{post.body}</PostBody>
+    </div>
+  );
+}
+
+function App() {
+  const { t } = useTranslation("main");
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src="/src/assets/react.svg" className="logo" alt="Vite logo" />
-        </a>
+      <div className="mockData">
+        <ul>
+          {mockData.map((post: Post) => (
+            <li key={post.id}>
+              <ShowData post={post} />
+            </li>
+          ))}
+        </ul>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <div className="quary">
+        <QueryClientProvider client={queryClient}></QueryClientProvider>
       </div>
-      <ReadTheDocs $color={"blue"}>
-        {t("title")}
-        <ReactLogo width={16} height={16} />
-      </ReadTheDocs>
     </div>
   );
 }

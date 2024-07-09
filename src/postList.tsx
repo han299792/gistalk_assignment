@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { Post } from "./mockData";
 import ShowData from "./showData";
 
-const fetchPosts = async () => {
+const fetchPosts = async (): Promise<Post[]> => {
   const { data } = await axios.get<Post[]>(
     "https://jsonplaceholder.typicode.com/posts",
   );
@@ -29,7 +30,9 @@ const PostList = () => {
     <ul>
       {posts?.map((post: Post) => (
         <li key={post.id}>
-          <ShowData post={post} />
+          <Link to={`/posts/${post.id}/comments`}>
+            <ShowData post={post} />
+          </Link>
         </li>
       ))}
     </ul>

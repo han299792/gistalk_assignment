@@ -4,7 +4,7 @@ export interface Post {
   title: string;
   body: string;
 }
-export const mockData = [
+export const mockData: Post[] = [
   {
     userId: 1,
     id: 1,

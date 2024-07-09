@@ -10,7 +10,28 @@ const ReadTheDocs = styled.p<{
   $color?: CSSProperties["color"];
 }>`
   color: ${({ $color }) => $color ?? "red"};
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin: 16px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  @media (max-width: 600px) {
+    width: 90%;
+  }
 `;
+
+interface ShowDataProps {
+  post: Post;
+}
+
+function ShowData({ post }: ShowDataProps) {
+  return (
+    <div>
+      {post.title} : {post.body}
+    </div>
+  );
+}
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,27 +39,15 @@ function App() {
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src="/src/assets/react.svg" className="logo" alt="Vite logo" />
-        </a>
+      <div className="mockData">
+        <ul>
+          {mockData.map((post: Post) => (
+            <li key={post.id}>
+              <ShowData post={post} />
+            </li>
+          ))}
+        </ul>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count: number) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <ReadTheDocs $color={"blue"}>
-        {t("title")}
-        <ReactLogo width={16} height={16} />
-      </ReadTheDocs>
     </div>
   );
 }

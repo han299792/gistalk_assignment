@@ -1,10 +1,9 @@
 import "./App.css";
-
-import { useState } from "react/jsx-runtime";
+import "tailwindcss/tailwind.css";
+//import { useState } from "react/jsx-runtime";
 import { useTranslation } from "react-i18next";
 import styled, { CSSProperties } from "styled-components";
 import { mockData, Post } from "./mockData.ts";
-import ReactLogo from "./assets/react.svg?react";
 
 const ReadTheDocs = styled.p<{
   $color?: CSSProperties["color"];
@@ -24,19 +23,26 @@ const ReadTheDocs = styled.p<{
 interface ShowDataProps {
   post: Post;
 }
+const PostTitle = styled.h1`
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+`;
+
+const PostBody = styled.p`
+  font-size: 1em;
+`;
 
 function ShowData({ post }: ShowDataProps) {
   return (
     <div>
-      {post.title} : {post.body}
+      <PostTitle>{post.title}</PostTitle>
+      <PostBody>{post.body}</PostBody>
     </div>
   );
 }
 
 function App() {
-  const [count, setCount] = useState(0);
   const { t } = useTranslation("main");
-
   return (
     <div className="App">
       <div className="mockData">

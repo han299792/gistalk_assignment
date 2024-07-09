@@ -11,16 +11,19 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.50.1",
     "@tanstack/react-query-devtools": "^5.50.1",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "latest",
+    "axios": "^1.7.2",
     "i18next": "^23.7.16",
     "i18next-browser-languagedetector": "^7.2.0",
     "postcss": "latest",
     "prettier": "^3.2.4",
     "react-i18next": "^14.0.0",
-    "styled-components": "^6.1.8",
+    "react-router-dom": "^6.24.1",
+    "styled-components": "^6.1.11",
     "tailwindcss": "latest"
   },
   "devDependencies": {

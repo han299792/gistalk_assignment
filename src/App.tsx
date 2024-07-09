@@ -1,9 +1,9 @@
 import "./App.css";
 
-import { useState } from "react";
+import { useState } from "react/jsx-runtime";
 import { useTranslation } from "react-i18next";
 import styled, { CSSProperties } from "styled-components";
-
+import { mockData, Post } from "./mockData.ts";
 import ReactLogo from "./assets/react.svg?react";
 
 const ReadTheDocs = styled.p<{
@@ -28,7 +28,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button onClick={() => setCount((count: number) => count + 1)}>
           count is {count}
         </button>
         <p>

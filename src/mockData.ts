@@ -1,15 +1,20 @@
-const data = 
-[
-{
-   "userId": 1,
-   "id": 1,
-   "title": "test title one",
-   "body": "test body one"
- },
+export interface Post {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+}
+export const mockData = [
   {
-   "userId": 2,
-   "id": 2,
-   "title": "test title two",
-   "body": "test body two"
- }
- ]
+    userId: 1,
+    id: 1,
+    title: "test title one",
+    body: "test body one",
+  },
+  {
+    userId: 2,
+    id: 2,
+    title: "test title two",
+    body: "test body two",
+  },
+];

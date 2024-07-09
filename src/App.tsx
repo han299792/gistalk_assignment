@@ -4,6 +4,7 @@ import "tailwindcss/tailwind.css";
 import { useTranslation } from "react-i18next";
 import styled, { CSSProperties } from "styled-components";
 import { mockData, Post } from "./mockData.ts";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const ReadTheDocs = styled.p<{
   $color?: CSSProperties["color"];
@@ -32,6 +33,8 @@ const PostBody = styled.p`
   font-size: 1em;
 `;
 
+const queryClient = new QueryClient();
+
 function ShowData({ post }: ShowDataProps) {
   return (
     <div>
@@ -53,6 +56,9 @@ function App() {
             </li>
           ))}
         </ul>
+      </div>
+      <div className="quary">
+        <QueryClientProvider client={queryClient}></QueryClientProvider>
       </div>
     </div>
   );

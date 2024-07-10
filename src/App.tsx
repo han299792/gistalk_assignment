@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
+import Album from "./album";
 import CommentList from "./commentList";
 import Home from "./home";
 import PostList from "./postList";
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/posts" element={<PostList />} />
           <Route path="/posts/:id/comments" element={<CommentList />} />
+          <Route path="/photos" element={<Album />} />
           <Route path="*" element={<div>Page Not Found</div>} />
         </Routes>
       </Router>

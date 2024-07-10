@@ -1,17 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import React from "react";
 import { Link } from "react-router-dom";
 
+import { fetchPosts } from "./api";
 import { Post } from "./mockData";
 import ShowData from "./showData";
-
-const fetchPosts = async (): Promise<Post[]> => {
-  const { data } = await axios.get<Post[]>(
-    "https://jsonplaceholder.typicode.com/posts",
-  );
-  return data;
-};
 //비동기함수는 화살표형으로만 쓸 수 있나?
 const PostList = () => {
   const {

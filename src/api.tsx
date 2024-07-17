@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import { Photo } from "./album";
+import { Comment } from "./commentList";
 import { Post } from "./mockData";
 
 export const fetchPosts = async (): Promise<Post[]> => {
@@ -15,7 +16,7 @@ export const fetchComments = async (postId: number): Promise<Comment[]> => {
   );
   return data;
 };
-export const fetchPhotos = async (): Promise<Photo> => {
+export const fetchPhotos = async (): Promise<Photo[]> => {
   const { data } = await axios.get(
     "https://jsonplaceholder.typicode.com/photos",
   );

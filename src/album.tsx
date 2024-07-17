@@ -7,8 +7,8 @@ export interface Photo {
   albumId: number;
   id: number;
   title: string;
-  url: URL;
-  thumbnailUrl: URL;
+  url: string;
+  thumbnailUrl: string;
 }
 
 const Album = () => {
